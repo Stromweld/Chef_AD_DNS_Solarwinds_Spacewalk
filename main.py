@@ -46,25 +46,25 @@ def decrypt(file_name):
 LOGGER = logging.getLogger()
 LOGGER.setLevel(logging.INFO)
 CHEF_SERVER_URLS = (
-    'https://chef-automate-zddqq0w8qotvayto.us-west-2.opsworks-cm.io/organizations/default',
-    'https://chef-automate-zddqq0w8qotvayto.us-west-2.opsworks-cm.io/organizations/corey-dev',
-    'https://chef-automate-zddqq0w8qotvayto.us-west-2.opsworks-cm.io/organizations/dan-dev'
+    'https://chef-automate-server.example.com/organizations/default',
+    'https://chef-automate-server.example.com/organizations/corey-dev',
+    'https://chef-automate-server.examle.com/organizations/dan-dev'
 )
-CHEF_USERNAME = 'lambda_aws'
+CHEF_USERNAME = 'user_with_admin_privs_for_org'
 CHEF_PEM = decrypt('encrypted_chef_pem.txt')
 # Needed if using self signed certs such as when using a test Chef Server.
 # Include the certificate in the Lambda package at the location specified.
 os.environ["SSL_CERT_FILE"] = "opsworks-cm-ca-2016-root.pem"
-SATELLITE_URL = "http://spacewalk.teamfreeze.com/rpc/api"
-SATELLITE_LOGIN = 'rpc.user'
+SATELLITE_URL = "http://spacewalk.example.com/rpc/api"
+SATELLITE_LOGIN = 'username'
 SATELLITE_PASSWORD = decrypt('encrypted_spacewalk_password.txt')
-AD_USER = 'lambda.aws'
+AD_USER = 'user_with_admin_privs_for_AD'
 AD_PASSWORD = decrypt('encrypted_AD_password.txt')
-AD_SERVER = 'paw2am-ad01.teamfreeze.com'
-SW_SERVER = 'solar.teamfreeze.com'
-SW_USER = 'auto.manage'
+AD_SERVER = 'activedirectory-server.example.com'
+SW_SERVER = 'solarwinds.example.com'
+SW_USER = 'user_with_host_login_and_admin_privs_to_solarwinds'
 SW_PASSWORD = decrypt('encrypted_SW_password.txt')
-sshhostname = 'chef-automate-zddqq0w8qotvayto.us-west-2.opsworks-cm.io'
+sshhostname = 'chef-automate-server.example.com'
 sshuser = 'ec2-user'
 sshkey = 'aws_ssh_key_pem.txt'
 
