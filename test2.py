@@ -15,15 +15,15 @@ def decrypt(file_name):
         print err
         return False
 
-AD_USER = 'lambda.aws'
+AD_USER = 'user_with_host_access_and_sw_admin_access'
 AD_PASSWORD = decrypt('encrypted_AD_password.txt')
-AD_SERVER = 'paw2am-ad01.teamfreeze.com'
-SW_SERVER = 'solar.teamfreeze.com'
-SW_USER = 'auto.manage'
+AD_SERVER = 'ad-server.example.com'
+SW_SERVER = 'solarwinds.example.com'
+SW_USER = 'user_with_host_access_and_sw_admin_access'
 SW_PASSWORD = decrypt('encrypted_SW_password.txt')
 
-machine_name = 'taw2al-tstlam01'
-machine_ip = '172.21.16.188'
+machine_name = 'testswmachine'
+machine_ip = '192.1.1.8'
 
 if machine_name:
     ps_script = """Add-PSSnapin SwisSnapin

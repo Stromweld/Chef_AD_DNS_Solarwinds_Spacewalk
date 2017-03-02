@@ -15,10 +15,10 @@ def decrypt(file_name):
         LOGGER.error(err)
         return False
 
-AD_USER = 'lambda.aws'
+AD_USER = 'user_with_ad_admin_access'
 AD_PASSWORD = decrypt('encrypted_AD_password.txt')
-AD_SERVER = 'paw2am-ad01.teamfreeze.com'
-machine_name = 'taw2bl-testty16'
+AD_SERVER = 'ad-server.example.com'
+machine_name = 'testhostname'
 
 if machine_name:
     s = winrm.Session(AD_SERVER, auth=(AD_USER, AD_PASSWORD))
