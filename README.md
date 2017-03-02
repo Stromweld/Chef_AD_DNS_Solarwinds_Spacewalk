@@ -23,3 +23,5 @@ Update the variables in the top of the main.py file with your environments setti
 Simply update the aws_ssh_key_pem.txt file with an ssh key file contents for a user that can login via ssh to chef automate server.
 Using the encryption method explained in the blog you can add encrypted versions of the other credentials in the encrypted_*.txt files.
 If you just want to get it to work and don't care about the encryption then modify the main.py variables and remove the decrypt portions.
+
+If you want to skip cleaning up any of the systems simply comment out the method call at the end of the main.py file for the system you want to skip.
