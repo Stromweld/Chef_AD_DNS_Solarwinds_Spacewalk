@@ -1,0 +1,14 @@
+# Automatically Delete Terminated Instances in Chef Server with AWS Lambda
+Using CloudWatch Events, when an instance is terminated a Lambda function is triggered that will remove the node from Chef server for you.  For this we'll use Lambda, CloudWatch Events, and AWS KMS.
+
+**WARNING:  This code is meant as reference material only.  Using this code may cost you money.  Please be sure you understand your current usage and the costs associated with this reference code before launching in your AWS account.**
+
+## Details
+When an instance terminates, CloudWatch events will pass a JSON object containing the Instance ID to a Lambda function.  The JSON object does not contain any other identifying information of the instance, such as DNS name or Public IP Address.  Additionally, since the instance is now in a terminated state we cannot query any other identifying information about the instance.  This is important to understand because it effects how we must query for the node in Chef Server in order to delete it automatically.
+
+The Lambda function then communicates with the Chef Server using a request hashed with a valid private key of a valid Chef Server user with appropriate permissions.  The Lambda expects an AWS KMS encrypted version of the private key which it will decrypt on the fly to sign all requests to the Chef Server.  The Lambda then makes a request to find a matching node in the Chef Server and finally a request to delete that node.
+
+Please follow instructions found at https://aws.amazon.com/blogs/apn/automatically-delete-terminated-instances-in-chef-server-with-aws-lambda-and-cloudwatch-events/
+or the original github repo found at https://github.com/awslabs/lambda-chef-node-cleanup/blob/master/lambda/main.py
+
+I extended the original project to clean up other systems as well. I'm a new programmer learning as I go so the code may be a little dirty.
