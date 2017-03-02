@@ -12,3 +12,7 @@ Please follow instructions found at https://aws.amazon.com/blogs/apn/automatical
 or the original github repo found at https://github.com/awslabs/lambda-chef-node-cleanup/blob/master/lambda/main.py
 
 I extended the original project to clean up other systems as well. I'm a new programmer learning as I go so the code may be a little dirty.
+
+Chef uses pychef to remove nodes.
+AD, DNS, and Solarwinds methods are using winrm and passing in a powershell script with commands to remove nodes.
+Spacewalk uses the spacewalk api to remove nodes.
